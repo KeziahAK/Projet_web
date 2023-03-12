@@ -17,8 +17,8 @@
       </div>
 
       <div class="légende">
-        <h2>Le jour où les étoiles se sont éteintes</h2>
-        <p>Nine Gorman et Marie Alhinho</p>
+        <h2><strong>Le jour où les étoiles se sont éteintes</strong><br>Nine Gorman et Marie Alhinho</h2>
+        
       </div>
     </div>
 
@@ -39,22 +39,18 @@ export default {
 <style>
 
 
-.books-gallery{
 
-  /* display: flex;
-  flex-wrap:nowrap; */
-  border-radius: 4px;
-  width: 150px;
-  
-  text-align: justify;
-  padding : 10px;
-  margin: 10px;
 
-  background-color: #F1C864;
-}
-
-h2{
-  font-size: 10px;
+h2,p{
+  background-color: rgb(221, 221, 220);
+  padding : 5px;
+  margin: 5px;
+  border-radius : 10px;
+  border : 1px solid rgb(136, 135, 135);
+  font-size: 1em;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: left;
+  display: inline-block;
 }
 
 
@@ -62,10 +58,32 @@ img{
 
   border-radius: 10px;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.7);
+  background-color: rgb(213, 213, 212);
+  padding : 5px;
+  margin: 5px;
+  border-radius : 10px;
+  border : 1px solid rgb(116, 115, 115);
+  font-size: 1em;
+  text-align: left;
+  display: inline-block;
 }
 
 h2:hover{
   color : rgb(45, 98, 148);
+  
+}
+
+.books-gallery{
+
+background-color: rgb(254, 254, 254);
+padding : 5px;
+margin: 5px;
+border-radius : 10px;
+border : 1px solid rgb(145, 144, 144);
+font-size: 1em;
+text-align: center;
+display: inline-block;
+
 }
 
 

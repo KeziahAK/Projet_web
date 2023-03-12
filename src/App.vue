@@ -7,20 +7,26 @@
   </header>
 
   <nav>
-    <div>
-        
-        <a href="#">Nouveautés</a>
-        <a href="#">Parcourir</a>
-        <a href="#">Ma bibliothèque</a>
-        <a href="#">Recherche</a>
-        
-    </div>
 
+
+    <ul>
+        <li><a href="#home">Nouveautés</a></li>
+        <li><a href="#Parcourir">Parcourir</a></li>
+        <li><a href="#Ma bibli">Ma Bibliothèque</a></li>
+        <li style="float:right"><a class="active" href="#recherche">Recherche</a></li>
+    </ul>
+
+
+
+    
   </nav>
 
   <main>
 
     <div class="books-gallery">
+      <BookCard/>
+      <BookCard/>
+      <BookCard/>
       <BookCard/>
       <BookCard/>
       <BookCard/>
@@ -63,13 +69,46 @@ export default {
 
 }
 
-.nav{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  
+.active {
+    background-color: #84d086;
+    border-radius: 10px;
 }
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #7e7d7d;
+    border: 1px solid e7e7e7;
+    border-radius: 10px;
+    /* position: fixed; */
+    width: 100%;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.7);
+
+}
+
+li {
+    float: left;
+    
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-radius: 10px;
+    
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #3d5d4a;
+}
+
 
 
 
@@ -93,13 +132,5 @@ h1{
   color :antiquewhite;
 }
 
-.books-gallery{
-    display: flex;
-    flex-direction:row;
-    flex-wrap: wrap; /*retour à la ligne*/
-    justify-content: space-between; /* les éléments sont étirés sur tout l'axe (il y a de l'espace entre eux) ; */
-    height: 250px; /* Un peu de hauteur pour que les éléments aient la place de bouger */
-    align-items: stretch;
-    align-content: stretch;
-}
+
 </style>
