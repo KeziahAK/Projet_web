@@ -7,7 +7,7 @@
   </head>
   <body>
 
-    <div class="books-gallery">
+    <div class="books-card">
       <div class="image">
         <img src="../assets/harry_cover.jpeg"
         alt="Le jour où les étoiles se sont éteintes"
@@ -17,7 +17,7 @@
       </div>
 
       <div class="légende">
-        <h2>{{top_work}}<br>{{name}}</h2>
+        <h2>{{title}}</h2>
         
       </div>
     </div>
@@ -34,9 +34,7 @@
 export default {
   name: 'BookCard',
   props:{
-    name : String,
-    top_work : String,
-    image : String
+    title : String
   }
 
 }
@@ -92,30 +90,10 @@ border-radius : 10px;
 /* border : 1px solid rgb(145, 144, 144); */
 font-size: 1em;
 text-align: center;
-display: inline-block;
+display: flex;
 
 }
 
-.image{
-  
-  overflow: hidden;
-  border-radius : 10px;
-  border-radius: 10px;
-  padding : 5px;
-  margin: 5px;
-  
-}
 
-.image:hover{
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.7);
-}
-
-img:hover{
-  -ms-transform: scale(1.5) translate(0px); /* IE 9 */
-  -webkit-transform: scale(1.5) translate(0px); /* Safari 3-8 */
-  transform: scale(1.5) translate(0px);
-  border-radius : 10px;
-  
-}
 
 </style>
