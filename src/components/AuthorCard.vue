@@ -7,19 +7,18 @@
   </head>
   <body>
 
-    <div class="books-card">
+    <div class="author-card">
       <div class="image">
-        <!-- <img src="https://covers.openlibrary.org/b/id/12547191-M.jpg"> -->
-        <img :src="cover_id"
-        alt="Le jour où les étoiles se sont éteintes"
+        <img src="https://covers.openlibrary.org/a/olid/OL4327048A-M.jpg"
+        alt="Author photo"
         width="140"
         height="214.6"
-        title="Book Cover"/>
+        title="Author Cover"/>
       </div>
 
       <div class="légende">
-        <h2>{{title}}</h2>
-        <p>{{ name_author }}</p>
+        <h2>{{name_author}} </h2>
+        <!-- <p>{{ author_id }}</p> -->
         
       </div>
     </div>
@@ -34,18 +33,13 @@
 
 
 export default {
-  name: 'BookCard',
+  name: 'AuthorCard',
   props:{
-    cover_id :String,
     name_author : String,
-    title : String,
+    author_cover_id :String,
+    author_id :String
     
-  },
-
-  // beforeUpdate: function(){
-  //   console.log("Mon composent va être mis à jour ...")
-  // }
-
+  }
 
 }
 
@@ -85,7 +79,7 @@ h2:hover{
   
 }
 
-.books-gallery{
+.author-gallery{
 
 background-color: rgb(254, 254, 254);
 padding : 5px;
