@@ -31,6 +31,7 @@
             </li>
           <li><a href="#Ma bibli">Ma Bibliothèque</a></li>
 
+          <!-- Tri par ordre alphabéthique -->
           <label for="book-sort">Trier par : </label>
             <select v-model="booksSortType" id="book-sort">
               <option value="AZBook">Noms livres de A à Z</option>
@@ -39,37 +40,37 @@
               <option value="ZAAuthor">Noms auteurs de Z à A</option>
             </select>
             
-           <!-- search bar right align -->
+           <!-- search bar -->
           <div class="search">
               
-              <!-- <form action="#"> -->
+
                   <input type="text"
                       placeholder=" Que recherchez-vous ?"
                       v-model="search">
-                  <button type="submit" class="search-btn">
+                  <button v-if="search" @click="cleanSearch" type="submit" class="search-btn">
                     <i>          
                       <li style="float:right">Rechercher</li>
                     </i>
 
                   </button>    
 
-              <!-- </form> -->
+
           </div>
       </ul>
     </nav>
 
     <div class="books-gallery">
 
-      <!-- <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" :name_author="book.authors[0].name"/> -->
+      <!-- <BookCard v-for = "book in getFilteredBooks " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" :name_author="book.authors[0].name"/> -->
 
-      <BookCard v-for = "book in getFilteredBooks " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" :name_author="book.authors[0].name"/>
+      <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" :name_author="book.authors[0].name"/>
       
     </div>
 
     <div class="author-gallery">
 
      
-      <AuthorCard v-for = "book in getFilteredAuthors" :key="book.id" :name_author="book.authors[0].name" :author_cover_id="'https://covers.openlibrary.org/a/key/'+book.authors[0].key+'-M.jpg'" :author_id= "book.authors[0].key"/>
+      <AuthorCard v-for = "book in booksOrganizedData" :key="book.id" :name_author="book.authors[0].name" :author_cover_id="'https://covers.openlibrary.org/a/key/'+book.authors[0].key+'-M.jpg'" :author_id= "book.authors[0].key"/>
 
       
 
@@ -85,6 +86,8 @@
 
   <footer>
 
+    <App_footer></App_footer>
+
   </footer>
 
   
@@ -98,7 +101,8 @@ import BookCard from './components/BookCard.vue'
 import AuthorCard from './components/AuthorCard.vue'
 import App_header from './components/header.vue'
 import AuthorDetails from './components/AuthorDetails.vue'
-import { getBookData,getImage, getAuthorImage} from './BookAPI.js';
+import App_footer from './components/Footer.vue'
+import { getBookData,getImage, getAuthorImage} from './services/BookAPI.js';
 
 
 export default {
@@ -107,7 +111,8 @@ export default {
     BookCard,
     App_header,
     AuthorCard,
-    AuthorDetails
+    AuthorDetails,
+    App_footer
   },
 
   data(){
@@ -116,9 +121,18 @@ export default {
       imageData : [],
       authorData:[],
       isVisible : false,
-      booksSortType: "AZBook",
-      search: "",
+      booksSortType: localStorage.getItem("booksSortType") || "AZName",
+      search: localStorage.getItem("search") || "",
       color : '#9cf19f'
+    }
+  },
+
+  watch: {
+    search: function(newSearch){
+      localStorage.setItem("search",newSearch)
+    },
+    booksSortType: function(newBooksSortType){
+      localStorage.setItem("booksSortType", newBooksSortType)
     }
   },
 
@@ -145,10 +159,35 @@ export default {
       this.authorData = await getAuthorImage(id)
     },
 
+    cleanSearch: function() {
+      this.search = ""
+		}
+	
+
     
   },
 
   computed: {
+
+    booksOrganizedData: function(){
+
+      let data = [...this.bookData]
+      const reversed = ["ZABook", "ZAAuthor"].includes(this.booksSortType)
+      
+      if(this.booksSortType == "AZBook" || this.booksSortType =="ZABook"){
+        data.sort(function(a,b){return a["title"].localeCompare(b["title"])})
+
+      }
+
+      else{
+        data.sort(function(a,b){return a.authors[0]["name"].localeCompare(b.authors[0]["name"])})
+      }
+
+      if(reversed) data = data.reverse()
+      return data
+    },
+
+
     getFilteredBooks(){
       return this.bookData.filter(book=>{
         return book.title.toLowerCase().includes(this.search.toLowerCase());
@@ -161,16 +200,8 @@ export default {
       })
     },
 
-		booksOrganizedData: function() {
-			const field = ["AZName", "ZAName"].includes(this.booksSortType) ? "name" : "title"
-			const reversed = ["AZName", "ZAName"].includes(this.booksSortType)
-			const filterFunc = (a) => a.name.toLowerCase().includes(this.search.toLowerCase())
-			const comparator = (a, b) => a[field].localeCompare(b[field]) 
-			let data = this.bookData.filter(filterFunc)
-			data = data.sort(comparator)
-			if (reversed) data = data.reverse()
-			return data
-		}
+
+		
   } 
 
 }

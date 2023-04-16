@@ -9,7 +9,7 @@
 
     <div class="author-card">
       <div class="image">
-        <img src="https://covers.openlibrary.org/a/olid/OL4327048A-M.jpg"
+        <img src="https://covers.openlibrary.org/a/olid/OL27349A-M.jpg"
         alt="Author photo"
         width="140"
         height="214.6"
@@ -93,6 +93,12 @@ flex-wrap: wrap;
 
 
 
+}
+
+img:hover{
+-ms-transform: scale(1.07); /* IE 9 */
+-webkit-transform: scale(1.07); /* Safari 3-8 */
+transform: scale(1.07);
 }
 
 

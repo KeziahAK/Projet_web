@@ -101,6 +101,12 @@ flex-wrap: wrap;
 
 }
 
+img:hover{
+-ms-transform: scale(1.07); /* IE 9 */
+-webkit-transform: scale(1.07); /* Safari 3-8 */
+transform: scale(1.07);
+}
+
 
 
 </style>

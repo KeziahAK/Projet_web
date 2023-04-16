@@ -1,5 +1,5 @@
 const getBookData = async function() {
-    const response = await fetch("https://openlibrary.org/subjects/love.json")
+    const response = await fetch("https://openlibrary.org/subjects/fantastic.json")
     
     if (response.status == 200) {
         return response.json()
@@ -8,6 +8,7 @@ const getBookData = async function() {
     new Error(response.statusText)
     }
 }
+
 
 
 const getAuthorData = async function() {
