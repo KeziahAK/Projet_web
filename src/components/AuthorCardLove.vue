@@ -9,7 +9,7 @@
 
     <div class="author-card">
       <div class="image">
-        <img src="https://covers.openlibrary.org/a/olid/OL27349A-M.jpg"
+        <img src="https://covers.openlibrary.org/a/olid/OL23919A-M.jpg"
         alt="Author photo"
         width="140"
         height="214.6"
@@ -33,10 +33,9 @@
 
 
 export default {
-  name: 'AuthorCard',
+  name: 'AuthorCardLove',
   props:{
     name_author : String,
-    author_cover_id :String,
     author_id :String
     
   }
@@ -59,7 +58,7 @@ h2,p{
   font-size: 1em;
   font-family: 'Times New Roman', Times, serif;
   text-align: center;
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 6px 15px rgba(21, 58, 24, 0.7);
   
 }
 
@@ -67,7 +66,7 @@ h2,p{
 img{
 
   border-radius: 10px;
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 6px 15px rgba(21, 58, 24, 0.7);
   font-size: 1em;
   text-align: left;
   
@@ -79,20 +78,27 @@ h2:hover{
   
 }
 
-.author-gallery{
+.LoveGallery{
 
-background-color: rgb(254, 254, 254);
+background-color: rgb(0, 0, 0);
 padding : 5px;
 margin: 5px;
 border-radius : 10px;
-/* border : 1px solid rgb(145, 144, 144); */
 font-size: 1em;
 text-align: center;
 display:flex;
 flex-wrap: wrap;
 
+}
 
-
+.author-card{
+  background-color: rgb(0, 0, 0);
+  padding : 5px;
+  margin: 5px;
+  border-radius : 10px;
+  font-size: 1em;
+  /* border: solid 1px #1f9c49; */
+  box-shadow: 0px 6px 15px rgba(29, 108, 36, 0.7);
 }
 
 img:hover{

@@ -43,12 +43,13 @@
   .bannière_footer{
   
     padding:50px;
-    background: linear-gradient(90deg, #a5daa9, #6ebd69); /*faire un dégradé de couleur*/
-    /* background-image: url('../assets/fond.jpeg'); */
+    /* background: linear-gradient(90deg, #013011, #000000); faire un dégradé de couleur */
+    background-image: url('../assets/fond.jpg');
+
     background-attachment: fixed;
     opacity: 1.;
     border-radius: 10px 10px 10px 10px;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 6px 15px rgba(21, 58, 24, 0.7);
     
   }
 

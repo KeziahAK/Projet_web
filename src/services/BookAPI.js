@@ -1,5 +1,5 @@
 const getBookData = async function() {
-    const response = await fetch("https://openlibrary.org/subjects/fantastic.json")
+    const response = await fetch("https://openlibrary.org/subjects/love.json")
     
     if (response.status == 200) {
         return response.json()
@@ -9,6 +9,16 @@ const getBookData = async function() {
     }
 }
 
+const getBookDataFantastic = async function() {
+    const response = await fetch("https://openlibrary.org/subjects/fantastic.json")
+    
+    if (response.status == 200) {
+        return response.json()
+        
+    } else {
+    new Error(response.statusText)
+    }
+}
 
 
 const getAuthorData = async function() {
@@ -21,6 +31,8 @@ const getAuthorData = async function() {
     new Error(response.statusText)
     }
 }
+
+
 
 const getImage = async function(id) {
     const response = await fetch("https://covers.openlibrary.org/b/id/"+id+"-M.jpg")
@@ -44,4 +56,4 @@ const getAuthorImage = async function(id) {
     }
 }
 
-export{getBookData,getImage, getAuthorData, getAuthorImage};
+export{getBookData,getImage, getAuthorData, getAuthorImage,getBookDataFantastic};
