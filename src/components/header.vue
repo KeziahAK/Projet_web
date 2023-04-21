@@ -8,7 +8,7 @@
   <body>
 
     <div class="bannière">
-      <h1 class="titre"><img class= "logo" href="#my virtual library" id="logo" src="../assets/logo.png" alt="logo"/> Ma bibliothèque  <img class= "logo" href="#my virtual library" id="logo" src="../assets/logo.png" alt="logo"/> </h1>
+      <h1 class="titre"> Ma bibliothèque  </h1>
      
     </div>
 
@@ -160,7 +160,7 @@ export default {
   font-size: 30px;
   text-align: center;
   opacity:1.;
-  color :rgb(10, 116, 26);
+  color :rgb(236, 236, 236);
 }
 
 
