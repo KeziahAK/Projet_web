@@ -1,55 +1,58 @@
 <template>
-  <head>
-
-    <meta charset="UTF-8">
-    <title> Bookshop </title>
+    <head>
   
-  </head>
-  <body>
-
-    <div class="author-card">
-      <div class="image">
-        <img src="https://covers.openlibrary.org/a/olid/OL23919A-M.jpg"
-        alt="Author photo"
-        width="140"
-        height="214.6"
-        title="Author Cover"/>
-      </div>
-
-      <div class="légende">
-        <h2>{{name_author}} </h2>
-        <!-- <p>{{ author_id }}</p> -->
-        
-      </div>
-    </div>
-
-  </body>
-
-</template>
-
-<script>
-// import { stringLiteral } from '@babel/types';
-
-
-
-export default {
-  name: 'AuthorCardLove',
-  props:{
-    name_author : String,
-    author_id :String
+      <meta charset="UTF-8">
+      <title> Bookshop </title>
     
+    </head>
+    <body>
+  
+      <div class="books-card">
+        <div class="image">
+          <!-- <img src="https://covers.openlibrary.org/b/id/12547191-M.jpg"> -->
+          <img :src="cover_id"
+          alt="Le jour où les étoiles se sont éteintes"
+          width="140"
+          height="214.6"
+          title="Book Cover"/>
+        </div>
+  
+        <div class="légende">
+          <h2>{{title}}</h2>
+          <p>{{ date }}</p>
+          <p>{{ name_author }}</p>
+          
+        </div>
+      </div>
+  
+    </body>
+  
+  </template>
+  
+  <script>
+  
+  
+  export default {
+    name: 'BookCard',
+    props:{
+      cover_id :String,
+      name_author : String,
+      title : String,
+      date: String
+      
+    }
+  
+  
   }
+  
+  </script>
+  
+  <style>
+  
+  
 
-}
-
-</script>
-
-<style>
-
-
-
-
-h2,p{
+  
+  h2,p{
   background-color: rgb(240, 254, 239);
   padding : 5px;
   margin: 5px;
@@ -78,7 +81,7 @@ h2:hover{
   
 }
 
-.LoveGallery{
+.BooksGallery{
 
 background-color: rgb(0, 0, 0);
 padding : 5px;
@@ -91,7 +94,7 @@ flex-wrap: wrap;
 
 }
 
-.author-card{
+.books-card{
   background-color: rgb(0, 0, 0);
   padding : 5px;
   margin: 5px;
@@ -106,7 +109,7 @@ img:hover{
 -webkit-transform: scale(1.07); /* Safari 3-8 */
 transform: scale(1.07);
 }
-
-
-
-</style>
+  
+  
+  
+  </style>

@@ -1,59 +1,58 @@
 <template>
-  <head>
-
-    <meta charset="UTF-8">
-    <title> Bookshop </title>
+    <head>
   
-  </head>
-  <body>
-
-    <div class="book-card">
-      <div class="image">
-        <!-- <img src="https://covers.openlibrary.org/b/id/12547191-M.jpg"> -->
-        <img :src="cover_id"
-        alt="Livre"
-        width="140"
-        height="214.6"
-        title="Book Cover"/>
-      </div>
-
-      <div class="légende">
-        <h2>{{title}}</h2>
-        <p>{{ name_author }}</p>
-        
-      </div>
-    </div>
-
-  </body>
-
-</template>
-
-<script>
-
-
-export default {
-  name: 'BookCardLove',
-  props:{
-    cover_id :String,
-    name_author : String,
-    title : String,
+      <meta charset="UTF-8">
+      <title> Bookshop </title>
     
+    </head>
+    <body>
+  
+      <div class="author-card">
+        <div class="image">
+          <img src="https://covers.openlibrary.org/a/olid/OL27349A-M.jpg"
+          alt="Author photo"
+          width="140"
+          height="214.6"
+          title="Author Cover"/>
+        </div>
+  
+        <div class="légende">
+          <h2>{{name_author}} </h2>
+          <!-- <p>{{ author_id }}</p> -->
+          
+        </div>
+      </div>
+  
+    </body>
+  
+  </template>
+  
+  <script>
+  // import { stringLiteral } from '@babel/types';
+  
+  
+  
+  export default {
+    name: 'AuthorCard',
+    props:{
+      name_author : String,
+      author_id :String
+      
+    }
+  
   }
-
-
-}
-
-</script>
-
-<style>
-
-
-
-
-h2,p{
+  
+  </script>
+  
+  <style>
+  
+  
+  
+  
+  h2,p{
   background-color: rgb(240, 254, 239);
-  /* padding : 5px;
-  margin: 5px; */
+  padding : 5px;
+  margin: 5px;
   border-radius : 10px;
   border : 1px solid rgb(226, 226, 226);
   font-size: 1em;
@@ -79,7 +78,7 @@ h2:hover{
   
 }
 
-.LoveGallery{
+.AuthorGallery{
 
 background-color: rgb(0, 0, 0);
 padding : 5px;
@@ -87,14 +86,12 @@ margin: 5px;
 border-radius : 10px;
 font-size: 1em;
 text-align: center;
-
-
+display:flex;
+flex-wrap: wrap;
 
 }
 
-
-
-.book-card{
+.author-card{
   background-color: rgb(0, 0, 0);
   padding : 5px;
   margin: 5px;
@@ -102,9 +99,7 @@ text-align: center;
   font-size: 1em;
   /* border: solid 1px #1f9c49; */
   box-shadow: 0px 6px 15px rgba(29, 108, 36, 0.7);
-  
 }
-
 
 img:hover{
 -ms-transform: scale(1.07); /* IE 9 */
@@ -112,6 +107,5 @@ img:hover{
 transform: scale(1.07);
 }
 
-
-
-</style>
+  
+  </style>

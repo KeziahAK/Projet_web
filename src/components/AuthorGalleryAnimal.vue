@@ -6,7 +6,7 @@
   
   </head>
   <body>
-  <div class="AuthorLoveGallery">
+  <div class="AuthorAnimalGallery">
 
     <authorGalleryOptions v-model:authorsSortType="authorsSortType"/>
 
@@ -23,13 +23,13 @@
 
 <script>
 import AuthorCard from "./AuthorCard.vue"
-import { getBookData} from '../services/BookAPI.js'
+import { getBookDataAnimal} from '../services/BookAPI.js'
 import AuthorGalleryOptions from "./AuthorGalleryOptions.vue"
 
 
 
 export default {
-  name: 'AuthorGalleryLove',
+  name: 'AuthorGalleryAnimal',
   components:{
     AuthorCard,
     AuthorGalleryOptions
@@ -52,7 +52,7 @@ export default {
   methods: {
 
     async Author(){
-      const book = await getBookData()
+      const book = await getBookDataAnimal()
       this.authorData = book.works
     },
     

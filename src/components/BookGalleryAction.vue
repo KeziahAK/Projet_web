@@ -6,7 +6,7 @@
   
   </head>
   <body>
-    <div class ="BooksFantasticGallery">
+    <div class ="BooksActionGallery">
       <!-- Tri par ordre alphabéthique -->
       <bookGalleryOptions v-model:booksSortType="booksSortType"/>
 
@@ -22,14 +22,14 @@
 </template>
 
 <script>
-import { getBookDataFantastic, getImage} from '../services/BookAPI.js'
+import { getBookDataAction, getImage} from '../services/BookAPI.js'
 import BookCard from './BookCard.vue'
 import BookGalleryOptions from './BookGalleryOptions.vue'
 
 
 
 export default {
-  name: 'BookGalleryFantastic',
+  name: 'BookGalleryAction',
 
   components:{
     BookCard,
@@ -58,7 +58,7 @@ export default {
 
   methods: {
     async Book(){
-      const book = await getBookDataFantastic()
+      const book = await getBookDataAction()
       this.bookData = book.works
     },
     async Image(){

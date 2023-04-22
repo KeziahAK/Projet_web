@@ -9,6 +9,39 @@ const getBookData = async function() {
     }
 }
 
+const getBookDataAnimal = async function() {
+    const response = await fetch("https://openlibrary.org/subjects/Animal.json")
+    
+    if (response.status == 200) {
+        return response.json()
+        
+    } else {
+    new Error(response.statusText)
+    }
+}
+
+const getBookDataAction = async function() {
+    const response = await fetch("https://openlibrary.org/subjects/action.json")
+    
+    if (response.status == 200) {
+        return response.json()
+        
+    } else {
+    new Error(response.statusText)
+    }
+}
+
+const getBookDataTrend = async function() {
+    const response = await fetch("https://openlibrary.org/trending/now.json")
+    
+    if (response.status == 200) {
+        return response.json()
+        
+    } else {
+    new Error(response.statusText)
+    }
+}
+
 const getBookDataFantastic = async function() {
     const response = await fetch("https://openlibrary.org/subjects/fantastic.json")
     
@@ -20,17 +53,6 @@ const getBookDataFantastic = async function() {
     }
 }
 
-
-const getAuthorData = async function() {
-    const response = await fetch("https://openlibrary.org/search/authors.json")
-    
-    if (response.status == 200) {
-        return response.json()
-        
-    } else {
-    new Error(response.statusText)
-    }
-}
 
 
 
@@ -45,8 +67,8 @@ const getImage = async function(id) {
     }
 }
 
-const getAuthorImage = async function(id) {
-    const response = await fetch("https://openlibrary.org/"+id+".json")
+const getAuthorImage = async function(author_id) {
+    const response = await fetch("https://openlibrary.org/"+author_id+".json")
     
     if (response.status == 200) {
         return response.json()
@@ -56,4 +78,15 @@ const getAuthorImage = async function(id) {
     }
 }
 
-export{getBookData,getImage, getAuthorData, getAuthorImage,getBookDataFantastic};
+// const getAuthorImage = async function(id) {
+//     const response = await fetch("https://openlibrary.org/"+id+".json")
+    
+//     if (response.status == 200) {
+//         return response.json()
+        
+//     } else {
+//     new Error(response.statusText)
+//     }
+// }
+
+export{getBookData,getImage, getAuthorImage,getBookDataFantastic, getBookDataAction, getBookDataTrend, getBookDataAnimal};

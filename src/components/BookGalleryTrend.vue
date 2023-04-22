@@ -6,13 +6,16 @@
   
   </head>
   <body>
-    <div class ="BooksFantasticGallery">
+    <div class ="BooksTrendGallery">
       <!-- Tri par ordre alphabéthique -->
       <bookGalleryOptions v-model:booksSortType="booksSortType"/>
 
+
       <div class="BooksGallery">
 
-        <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" :name_author="book.authors[0].name" :date="book.first_publish_year"/>
+        <!-- <BookCard v-for = "book in getFilteredBooks " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" :name_author="book.authors[0].name"/> -->
+
+        <BookCardTrend v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_i="'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg'" :date="book.first_publish_year"/>
 
       </div>
   </div>
@@ -22,17 +25,18 @@
 </template>
 
 <script>
-import { getBookDataFantastic, getImage} from '../services/BookAPI.js'
-import BookCard from './BookCard.vue'
+import { getBookDataTrend, getImageTrend} from '../services/BookAPI.js'
+import BookCardTrend from './BookCardTrend.vue'
 import BookGalleryOptions from './BookGalleryOptions.vue'
 
 
 
+
 export default {
-  name: 'BookGalleryFantastic',
+  name: 'BookGalleryTrend',
 
   components:{
-    BookCard,
+    BookCardTrend,
     BookGalleryOptions
   },
 
@@ -44,11 +48,6 @@ export default {
     }
   },
 
-  // watch: {
-  //   booksSortType: function(newBooksSortType){
-  //     localStorage.setItem("booksSortType", newBooksSortType)
-  //   }
-  // },
 
   created: function(){
     this.Book()
@@ -58,12 +57,12 @@ export default {
 
   methods: {
     async Book(){
-      const book = await getBookDataFantastic()
+      const book = await getBookDataTrend()
       this.bookData = book.works
     },
     async Image(){
-      const id = this.book.cover_id;
-      this.imageData = await getImage(id)
+      const id = this.book.cover_i;
+      this.imageData = await getImageTrend(id)
       
     },
     

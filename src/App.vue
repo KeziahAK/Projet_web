@@ -15,7 +15,7 @@
   <main>
     
     <div class="books-gallery">
-      <BookGalleryLove />
+      <BookGalleryTrend />
     </div>
 
     <div class="author-gallery">
@@ -38,7 +38,7 @@
 
 
 
-import BookGalleryLove from './components/BookGalleryLove.vue'
+import BookGalleryTrend from './components/BookGalleryTrend.vue'
 import AuthorGalleryLove from './components/AuthorGalleryLove.vue'
 import App_header from './components/header.vue'
 import App_footer from './components/Footer.vue'
@@ -48,7 +48,7 @@ import App_footer from './components/Footer.vue'
 export default {
   name: 'App',
   components:{
-    BookGalleryLove,
+    BookGalleryTrend,
     App_header,
     AuthorGalleryLove,
     App_footer

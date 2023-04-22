@@ -20,8 +20,8 @@
               <div class="dropdown-content">
                 <a href="#"> Romance</a>
                 <a href="#"> Fantastique</a>
-                <a href="#"> Suspens</a>
-                <a href="#"> Policier</a>
+                <a href="#"> Action</a>
+                <a href="#"> Animaux</a>
               </div>
               
 
@@ -32,13 +32,13 @@
               <div class="dropdown-content_auteurs">
                 <a href="#"> Romance</a>
                 <a href="#"> Fantastique</a>
-                <a href="#"> Suspens</a>
-                <a href="#"> Policier</a>
+                <a href="#"> Action</a>
+                <a href="#"> Animaux</a>
               </div>
               
 
             </li>
-          <li><a href="#Ma bibli">Ma Bibliothèque</a></li>
+          <li><a href="#Ma bibli">Trending</a></li>
             
            <!-- search bar -->
           <div class="search">

@@ -8,19 +8,14 @@
   <body>
     <div class ="BooksLoveGallery">
       <!-- Tri par ordre alphabéthique -->
-      <label for="book-sort">Trier par : </label>
-              <select v-model="booksSortType" id="book-sort">
-                <option value="AZBook">Noms livres de A à Z</option>
-                <option value="ZABook">Noms livres de Z à A</option>
-                <option value="AZAuthor">Noms auteurs de A à Z</option>
-                <option value="ZAAuthor">Noms auteurs de Z à A</option>
-              </select>
+      <bookGalleryOptions v-model:booksSortType="booksSortType"/>
 
-      <div class="LoveGallery">
+
+      <div class="BooksGallery">
 
         <!-- <BookCard v-for = "book in getFilteredBooks " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" :name_author="book.authors[0].name"/> -->
 
-        <BookCardLove v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" :name_author="book.authors[0].name"/>
+        <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" :name_author="book.authors[0].name" :date="book.first_publish_year"/>
 
       </div>
   </div>
@@ -31,7 +26,8 @@
 
 <script>
 import { getBookData, getImage} from '../services/BookAPI.js'
-import BookCardLove from './BookCardLove.vue'
+import BookCard from './BookCard.vue'
+import BookGalleryOptions from './BookGalleryOptions.vue'
 
 
 
@@ -39,7 +35,8 @@ export default {
   name: 'BookGalleryLove',
 
   components:{
-    BookCardLove
+    BookCard,
+    BookGalleryOptions
   },
 
   data(){
@@ -50,11 +47,6 @@ export default {
     }
   },
 
-  watch: {
-    booksSortType: function(newBooksSortType){
-      localStorage.setItem("booksSortType", newBooksSortType)
-    }
-  },
 
   created: function(){
     this.Book()
