@@ -13,15 +13,15 @@
     </div>
 
     <nav>
-      <ul>
-          <img class= "logo" style="float:left" href="#my virtual library" id="logo" src="../assets/logo.png" alt="logo"/> 
+      <ul>                
+        <router-link to="/"> <img class= "logo" style="float:left" href="#my virtual library" id="logo" src="../assets/logo.png" alt="logo"/></router-link> 
           <li class="dropdown">
             <a href="#Parcourir" class="dropbtn">Parcourir Livres</a>
               <div class="dropdown-content">
-                <a href="#"> Romance</a>
-                <a href="#"> Fantastique</a>
-                <a href="#"> Action</a>
-                <a href="#"> Animaux</a>
+                <router-link to="/ParcourirLivres/Romance"> Romance</router-link>
+                <router-link to="/ParcourirLivres/Fantastique"> Fantastique</router-link>
+                <router-link to="/ParcourirLivres/Action"> Action</router-link>
+                <router-link to="/ParcourirLivres/Animaux"> Animaux</router-link>
               </div>
               
 
@@ -30,15 +30,15 @@
             <li class="dropdown_auteurs">
             <a href="#Parcourir" class="dropbtn_auteurs">Parcourir Auteurs</a>
               <div class="dropdown-content_auteurs">
-                <a href="#"> Romance</a>
-                <a href="#"> Fantastique</a>
-                <a href="#"> Action</a>
-                <a href="#"> Animaux</a>
+                <router-link to="/ParcourirAuteurs/Romance"> Romance</router-link>
+                <router-link to="/ParcourirAuteurs/Fantastique"> Fantastique</router-link>
+                <router-link to="/ParcourirAuteurs/Action"> Action</router-link>
+                <router-link to="ParcourirAuteurs/Animaux"> Animaux</router-link>
               </div>
               
 
             </li>
-          <li><a href="#Ma bibli">Trending</a></li>
+          <li><router-link to="/Tendances"> Tendances</router-link></li>
             
            <!-- search bar -->
           <div class="search">
@@ -73,11 +73,31 @@
 // import AuthorCard from './components/AuthorCard.vue'
 
 import { getBookData} from '../services/BookAPI.js';
+// import MyAccueil from './Accueil.vue'
+// import AuthorGalleryLove from './AuthorGalleryLove.vue'
+// import BookGalleryLove from './BookGalleryLove.vue'
+// import AuthorGalleryAction from './AuthorGalleryAction.vue'
+// import BookGalleryAction from './BookGalleryAction.vue'
+// import AuthorGalleryAnimal from './AuthorGalleryAnimal.vue'
+// import BookGalleryAnimal from './BookGalleryAnimal.vue'
+// import AuthorGalleryFantastic from './AuthorGalleryFantastic.vue'
+// import BookGalleryFantastic from './BookGalleryFantastic.vue'
+// import BookGalleryTrend from './BookGalleryTrend.vue'
 
 
 export default {
   name: 'App',
   components:{
+    // MyAccueil,
+    // AuthorGalleryLove,
+    // AuthorGalleryAction,
+    // BookGalleryLove,
+    // BookGalleryAction,
+    // AuthorGalleryAnimal,
+    // BookGalleryAnimal,
+    // AuthorGalleryFantastic,
+    // BookGalleryFantastic,
+    // BookGalleryTrend
 
   },
 

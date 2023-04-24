@@ -13,13 +13,21 @@
   </header>  
   
   <main>
+
+    <!-- <div class ="Accueil">
+      
+    </div>
     
     <div class="books-gallery">
-      <BookGalleryTrend />
+      
     </div>
 
     <div class="author-gallery">
-      <AuthorGalleryLove/>
+
+      
+    </div> -->
+    <div>
+      <router-view></router-view>
     </div>
    
 
@@ -38,8 +46,8 @@
 
 
 
-import BookGalleryTrend from './components/BookGalleryTrend.vue'
-import AuthorGalleryLove from './components/AuthorGalleryLove.vue'
+// import MyAccueil from './components/Accueil.vue'
+// import AuthorGalleryLove from './components/AuthorGalleryLove.vue'
 import App_header from './components/header.vue'
 import App_footer from './components/Footer.vue'
 // import { getAuthorImage} from './services/BookAPI.js';
@@ -48,9 +56,9 @@ import App_footer from './components/Footer.vue'
 export default {
   name: 'App',
   components:{
-    BookGalleryTrend,
+    // MyAccueil,
     App_header,
-    AuthorGalleryLove,
+    // AuthorGalleryLove,
     App_footer
   },
 
