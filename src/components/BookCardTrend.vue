@@ -10,11 +10,11 @@
       <div class="books-card">
         <div class="image">
           <!-- <img src="https://covers.openlibrary.org/b/id/12547191-M.jpg"> -->
-          <img :src="cover_i"
+          <router-link to="/ParcourirLivres/LivresDetails"><img :src="cover_i"
           alt="Le jour où les étoiles se sont éteintes"
           width="140"
           height="214.6"
-          title="Book Cover"/>
+          title="Book Cover"/></router-link>
         </div>
   
         <div class="légende">

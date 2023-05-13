@@ -11,6 +11,7 @@ import AuthorGalleryLove from "./components//AuthorGalleryLove.vue"
 import AuthorGalleryAction from "./components//AuthorGalleryAction.vue"
 import AuthorGalleryAnimal from "./components//AuthorGalleryAnimal.vue"
 import AuthorGalleryFantastic from "./components//AuthorGalleryFantastic.vue"
+import DetailsBookData from "./components/DetailsBookData.vue"
 
 import App from './App.vue'
 
@@ -25,7 +26,8 @@ const routes = [
     {path: '/ParcourirAuteurs/Action', component : AuthorGalleryAction, name:"AuthorGalleryAction"},
     {path: '/ParcourirAuteurs/Animaux', component : AuthorGalleryAnimal, name:"AuthorGalleryAnimal"},
     {path: '/ParcourirAuteurs/Fantastique', component : AuthorGalleryFantastic, name:"AuthorGalleryFantastic"},
-    // { path: '*', redirect: '/'},
+    {path: '/ParcourirLivres/LivresDetails', component : DetailsBookData, name:"DetailsBookData"},
+    // { path: '*', redirect:'/'},
 ]
 
 const router = createRouter({

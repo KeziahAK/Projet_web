@@ -8,7 +8,7 @@
   <body>
 
     <div class="bannière">
-      <h1 class="titre"> Ma bibliothèque  </h1>
+      <h1 class="titre"> My Virtual Library  </h1>
      
     </div>
 
@@ -46,7 +46,7 @@
 
                   <input type="text"
                       placeholder=" Que recherchez-vous ?"
-                      v-model="search">
+                      v-model="search" @keyup.enter="submit" >
                   <button v-if="search" @click="cleanSearch" type="submit" class="search-btn">
                     <i>          
                       <li style="float:right">Rechercher</li>
@@ -87,7 +87,7 @@ import { getBookData} from '../services/BookAPI.js';
 
 export default {
   name: 'App',
-  components:{
+  props:{
     // MyAccueil,
     // AuthorGalleryLove,
     // AuthorGalleryAction,
@@ -165,7 +165,7 @@ export default {
 
 .bannière{
 
-  padding:100px;
+  padding:90px;
   /* background: linear-gradient(90deg, #d52a2a, #bf2eba); */ /*faire un dégradé de couleur*/
   background-image: url('../assets/fond.jpg');
   background-attachment: fixed;
@@ -180,7 +180,7 @@ export default {
   font-size: 30px;
   text-align: center;
   opacity:1.;
-  color :rgb(236, 236, 236);
+  color :rgb(172, 245, 166);
 }
 
 
@@ -299,7 +299,6 @@ li.dropdown_auteurs:hover {
 .dropdown_auteurs:hover .dropdown-content_auteurs {
   display: block;
 }
-
 
 h1{
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

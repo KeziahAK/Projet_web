@@ -12,8 +12,6 @@
   
         <h1>Bienvenue</h1>
         <img src="../assets/Bienvenue.jpg">
-
-          <!-- <p>{{ author_id }}</p> -->
           
      </div>
 
@@ -23,9 +21,6 @@
   </template>
   
   <script>
-  // import { stringLiteral } from '@babel/types';
-  
-  
   
   export default {
     name: 'MyAccueil'
@@ -43,7 +38,6 @@
     display :block;
     
   }
-
 
   
   </style>

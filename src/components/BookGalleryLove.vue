@@ -13,8 +13,6 @@
 
       <div class="BooksGallery">
 
-        <!-- <BookCard v-for = "book in getFilteredBooks " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" :name_author="book.authors[0].name"/> -->
-
         <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" :name_author="book.authors[0].name" :date="book.first_publish_year"/>
 
       </div>
@@ -55,10 +53,24 @@ export default {
   },
 
   methods: {
+
     async Book(){
       const book = await getBookData()
       this.bookData = book.works
     },
+
+    // async All(){
+  
+    //   for (let i=1; i<30; i++){
+    //     let book = await getBookData(i);
+    //     this.bookData = book.works;
+    //     for (let j=0; j<20; j++){
+    //       this.bookData.push(book[j]);
+    //       console.log(this.bookData);
+    //     }
+    //   }
+    // },
+
     async Image(){
       const id = this.book.cover_id;
       this.imageData = await getImage(id)

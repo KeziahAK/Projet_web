@@ -78,15 +78,15 @@ const getAuthorImage = async function(author_id) {
     }
 }
 
-// const getAuthorImage = async function(id) {
-//     const response = await fetch("https://openlibrary.org/"+id+".json")
+const getDetails = async function(id) {
+    const response = await fetch("https://openlibrary.org/works/"+id+".json")
     
-//     if (response.status == 200) {
-//         return response.json()
+    if (response.status == 200) {
+        return response.json()
         
-//     } else {
-//     new Error(response.statusText)
-//     }
-// }
+    } else {
+    new Error(response.statusText)
+    }
+}
 
-export{getBookData,getImage, getAuthorImage,getBookDataFantastic, getBookDataAction, getBookDataTrend, getBookDataAnimal};
+export{getBookData,getImage, getAuthorImage,getBookDataFantastic, getBookDataAction, getBookDataTrend, getBookDataAnimal, getDetails};

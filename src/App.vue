@@ -14,18 +14,6 @@
   
   <main>
 
-    <!-- <div class ="Accueil">
-      
-    </div>
-    
-    <div class="books-gallery">
-      
-    </div>
-
-    <div class="author-gallery">
-
-      
-    </div> -->
     <div>
       <router-view></router-view>
     </div>
@@ -46,19 +34,15 @@
 
 
 
-// import MyAccueil from './components/Accueil.vue'
-// import AuthorGalleryLove from './components/AuthorGalleryLove.vue'
 import App_header from './components/header.vue'
 import App_footer from './components/Footer.vue'
-// import { getAuthorImage} from './services/BookAPI.js';
+
 
 
 export default {
   name: 'App',
   components:{
-    // MyAccueil,
     App_header,
-    // AuthorGalleryLove,
     App_footer
   },
 

@@ -7,14 +7,14 @@
     </head>
     <body>
   
-      <div class="books-card">
+      <div class="books-details-card">
         <div class="image">
           <!-- <img src="https://covers.openlibrary.org/b/id/12547191-M.jpg"> -->
-          <img :src="cover_id"
-          alt="Le jour où les étoiles se sont éteintes"
+          <router-link to="/ParcourirLivres/LivresDetails"><img :src="cover_id"
+          alt="Book Cover"
           width="140"
           height="214.6"
-          title="Book Cover"/>
+          title="Book Cover"/></router-link>
         </div>
   
         <div class="légende">
@@ -33,7 +33,7 @@
   
   
   export default {
-    name: 'BookCard',
+    name: 'BookDetailsCard',
     props:{
       cover_id :String,
       name_author : String,
@@ -66,7 +66,7 @@
 }
 
 
-img{
+.image{
 
   border-radius: 10px;
   box-shadow: 0px 6px 15px rgba(21, 58, 24, 0.7);
@@ -104,7 +104,7 @@ flex-wrap: wrap;
   box-shadow: 0px 6px 15px rgba(29, 108, 36, 0.7);
 }
 
-img:hover{
+.image:hover{
 -ms-transform: scale(1.07); /* IE 9 */
 -webkit-transform: scale(1.07); /* Safari 3-8 */
 transform: scale(1.07);
