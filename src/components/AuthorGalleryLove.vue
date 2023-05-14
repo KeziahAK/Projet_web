@@ -12,7 +12,8 @@
 
     
     <div class="AuthorGallery">
-      <AuthorCard v-for = "book in authorsOrganizedData" :key="book.id" :name_author="book.authors[0].name" :author_id= "book.authors[0].key"/>
+      <AuthorCard v-for = "book in authorsOrganizedData " :key="book.id" :author_cover="'https://covers.openlibrary.org/a/olid/'+book.author_key[0]+'-M.jpg'" :name_author="book.author_name[0]"/>
+
     </div> 
   </div> 
 
@@ -23,7 +24,7 @@
 
 <script>
 import AuthorCard from "./AuthorCard.vue"
-import { getBookData} from '../services/BookAPI.js'
+import { getAllBookData, getAuthorImage} from '../services/BookAPI.js'
 import AuthorGalleryOptions from "./AuthorGalleryOptions.vue"
 
 
@@ -38,6 +39,7 @@ export default {
   data(){
     return{
       authorData:[],
+      imageData : [],
       authorsSortType: localStorage.getItem("authorsSortType") || "AZName",
       
     }
@@ -46,15 +48,26 @@ export default {
   created: function(){
 
     this.Author()
+    this.Image()
     
   },
 
   methods: {
 
     async Author(){
-      const book = await getBookData()
-      this.authorData = book.works
+      try {
+        const allAuthorData = await getAllBookData()
+        this.authorData = allAuthorData
+      } catch (error) {
+        console.error(error)
+      }
     },
+
+    async Image(){
+      const id = this.book.author_key[0];
+      this.imageData = await getAuthorImage(id)
+      
+    }
     
   },
 
@@ -64,7 +77,7 @@ export default {
 
       let data = [...this.authorData]
       const reversed = ["ZAAuthor"].includes(this.authorsSortType)
-      data.sort(function(a,b){return a.authors[0]["name"].localeCompare(b.authors[0]["name"])})
+      data.sort(function(a,b){return a.author_name[0].localeCompare(b.author_name[0])})
       if(reversed) data = data.reverse()
       return data
     },

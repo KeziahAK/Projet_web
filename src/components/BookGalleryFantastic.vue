@@ -12,8 +12,7 @@
 
       <div class="BooksGallery">
 
-        <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" :name_author="book.authors[0].name" :date="book.first_publish_year"/>
-
+        <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg'" :date="book.first_publish_year" :name_author="book.author_name[0]"/>
       </div>
   </div>
 
@@ -22,7 +21,7 @@
 </template>
 
 <script>
-import { getBookDataFantastic, getImage} from '../services/BookAPI.js'
+import { getAllBookDataFantastic,  getImage} from '../services/BookAPI.js'
 import BookCard from './BookCard.vue'
 import BookGalleryOptions from './BookGalleryOptions.vue'
 
@@ -57,9 +56,13 @@ export default {
   },
 
   methods: {
-    async Book(){
-      const book = await getBookDataFantastic()
-      this.bookData = book.works
+    async Book() {
+      try {
+        const allBookData = await getAllBookDataFantastic()
+        this.bookData = allBookData
+      } catch (error) {
+        console.error(error)
+      }
     },
     async Image(){
       const id = this.book.cover_id;
@@ -82,7 +85,7 @@ export default {
       }
 
       else{
-        data.sort(function(a,b){return a.authors[0]["name"].localeCompare(b.authors[0]["name"])})
+        data.sort(function(a,b){return a.author_name[0].localeCompare(b.author_name[0])})
       }
 
       if(reversed) data = data.reverse()

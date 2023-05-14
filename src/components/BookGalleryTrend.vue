@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { getBookDataTrend, getImageTrend} from '../services/BookAPI.js'
+import { getBookDataTrend, getImage} from '../services/BookAPI.js'
 import BookCardTrend from './BookCardTrend.vue'
 import BookGalleryOptions from './BookGalleryOptions.vue'
 
@@ -62,7 +62,7 @@ export default {
     },
     async Image(){
       const id = this.book.cover_i;
-      this.imageData = await getImageTrend(id)
+      this.imageData = await getImage(id)
       
     },
     

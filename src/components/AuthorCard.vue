@@ -9,7 +9,7 @@
   
       <div class="author-card">
         <div class="image">
-          <img src="https://covers.openlibrary.org/a/olid/OL27349A-M.jpg"
+          <img :src="author_cover"
           alt="Author photo"
           width="140"
           height="214.6"
@@ -36,7 +36,8 @@
     name: 'AuthorCard',
     props:{
       name_author : String,
-      author_id :String
+      author_id :String,
+      author_cover : String,
       
     }
   

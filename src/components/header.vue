@@ -69,37 +69,12 @@
 
 
 
-// import BookCard from './components/BookCard.vue'
-// import AuthorCard from './components/AuthorCard.vue'
-
 import { getBookData} from '../services/BookAPI.js';
-// import MyAccueil from './Accueil.vue'
-// import AuthorGalleryLove from './AuthorGalleryLove.vue'
-// import BookGalleryLove from './BookGalleryLove.vue'
-// import AuthorGalleryAction from './AuthorGalleryAction.vue'
-// import BookGalleryAction from './BookGalleryAction.vue'
-// import AuthorGalleryAnimal from './AuthorGalleryAnimal.vue'
-// import BookGalleryAnimal from './BookGalleryAnimal.vue'
-// import AuthorGalleryFantastic from './AuthorGalleryFantastic.vue'
-// import BookGalleryFantastic from './BookGalleryFantastic.vue'
-// import BookGalleryTrend from './BookGalleryTrend.vue'
+
 
 
 export default {
   name: 'App',
-  props:{
-    // MyAccueil,
-    // AuthorGalleryLove,
-    // AuthorGalleryAction,
-    // BookGalleryLove,
-    // BookGalleryAction,
-    // AuthorGalleryAnimal,
-    // BookGalleryAnimal,
-    // AuthorGalleryFantastic,
-    // BookGalleryFantastic,
-    // BookGalleryTrend
-
-  },
 
   data(){
     return{

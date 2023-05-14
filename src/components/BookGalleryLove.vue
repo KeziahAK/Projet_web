@@ -9,12 +9,12 @@
     <div class ="BooksLoveGallery">
       <!-- Tri par ordre alphabéthique -->
       <bookGalleryOptions v-model:booksSortType="booksSortType"/>
-
+      <SearchBar v-model:searchBook="searchBook" @search="searchText"/>
 
       <div class="BooksGallery">
 
-        <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" :name_author="book.authors[0].name" :date="book.first_publish_year"/>
-
+        <!-- <BookCard v-for = "book in booksOrganizedData " :key="book.key" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg'" :name_author="book.authors_name[0]" :date="book.first_publish_year"/> -->
+        <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg'" :date="book.first_publish_year" :name_author="book.author_name[0]"/>
       </div>
   </div>
 
@@ -23,9 +23,10 @@
 </template>
 
 <script>
-import { getBookData, getImage} from '../services/BookAPI.js'
+import {  getImage, getAllBookData} from '../services/BookAPI.js'
 import BookCard from './BookCard.vue'
 import BookGalleryOptions from './BookGalleryOptions.vue'
+import SearchBar from './SearchBar.vue'
 
 
 
@@ -34,7 +35,8 @@ export default {
 
   components:{
     BookCard,
-    BookGalleryOptions
+    BookGalleryOptions,
+    SearchBar
   },
 
   data(){
@@ -42,6 +44,8 @@ export default {
       bookData: [],
       imageData : [],
       booksSortType: localStorage.getItem("booksSortType") || "AZName",
+      searchBook: localStorage.getItem("searchBook"),
+      color : '#1f9c49'
     }
   },
 
@@ -54,28 +58,29 @@ export default {
 
   methods: {
 
-    async Book(){
-      const book = await getBookData()
-      this.bookData = book.works
+    async Book() {
+      try {
+        const allBookData = await getAllBookData()
+        this.bookData = allBookData
+      } catch (error) {
+        console.error(error)
+      }
     },
 
-    // async All(){
-  
-    //   for (let i=1; i<30; i++){
-    //     let book = await getBookData(i);
-    //     this.bookData = book.works;
-    //     for (let j=0; j<20; j++){
-    //       this.bookData.push(book[j]);
-    //       console.log(this.bookData);
-    //     }
-    //   }
-    // },
 
-    async Image(){
-      const id = this.book.cover_id;
+
+// async Book(){
+//       const book = await getBookDatasanspage()
+//       this.bookData = book.docs
+//     },
+
+
+
+  async Image(){
+      const id = this.book.cover_i;
       this.imageData = await getImage(id)
       
-    },
+    }
     
   },
 
@@ -92,7 +97,13 @@ export default {
       }
 
       else{
-        data.sort(function(a,b){return a.authors[0]["name"].localeCompare(b.authors[0]["name"])})
+        data.sort(function(a,b){return a.author_name[0].localeCompare(b.author_name[0])})
+      }
+
+      if (this.searchBook !== "") {
+        data = data.filter(function(book) {
+          return book.title.toLowerCase().includes(this.searchBook.toLowerCase())
+        }.bind(this))
       }
 
       if(reversed) data = data.reverse()
