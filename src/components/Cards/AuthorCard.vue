@@ -18,7 +18,6 @@
   
         <div class="légende">
           <h2>{{name_author}} </h2>
-          <!-- <p>{{ author_id }}</p> -->
           
         </div>
       </div>
@@ -28,9 +27,7 @@
   </template>
   
   <script>
-  // import { stringLiteral } from '@babel/types';
-  
-  
+
   
   export default {
     name: 'AuthorCard',

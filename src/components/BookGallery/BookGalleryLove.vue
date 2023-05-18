@@ -7,11 +7,7 @@
       
       </head>
       <body>
-        <div class ="BooksLoveGallery">
-          <!-- Tri par ordre alphabéthique -->
-          
-          <bookGalleryOptions v-model:booksSortType="booksSortType"/> 
-          
+        <div class ="BooksLoveGallery">          
           <div v-if="isLoading" class="loading-page">
             
             <p>Loading...</p>
@@ -19,6 +15,7 @@
           </div>
 
           <div v-else class="BooksGallery">
+            <bookGalleryOptions v-model:booksSortType="booksSortType"/> 
             <SearchBar v-model:searchBook="searchBook" @search="searchText"/>
             <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg'" :date="book.first_publish_year" :name_author="book.author_name[0]"/>
           </div>

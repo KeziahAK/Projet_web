@@ -8,7 +8,6 @@
   <body>
   <div class="AuthorActionGallery">
 
-    <authorGalleryOptions v-model:authorsSortType="authorsSortType"/>
 
     <div v-if="isLoading" class="loading-page">
             <p>Loading...</p>
@@ -16,6 +15,8 @@
     </div>
     
     <div v-else class="AuthorGallery">
+          <authorGalleryOptions v-model:authorsSortType="authorsSortType"/>
+
       <AuthorCard v-for = "book in authorsOrganizedData " :key="book.id" :author_cover="'https://covers.openlibrary.org/a/olid/'+book.author_key[0]+'-M.jpg'" :name_author="book.author_name[0]"/>
     </div> 
   </div> 

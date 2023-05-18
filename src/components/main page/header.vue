@@ -59,21 +59,13 @@ import { getBookData} from '../../services/BookAPI.js';
 
 
 export default {
-  name: 'App',
+  name: 'App_header',
 
   data(){
     return{
       bookData: [],
-      search: localStorage.getItem("search") || "",
       color : '#1f9c49'
     }
-  },
-
-  watch: {
-    search: function(newSearch){
-      localStorage.setItem("search",newSearch)
-    },
-
   },
 
   created: function(){
@@ -86,34 +78,11 @@ export default {
     async Book(){
       const book = await getBookData()
       this.bookData = book.works
-    },
-
-
-    cleanSearch: function() {
-      this.search = ""
-		}
-	
+    },	
 
     
   },
 
-  computed: {
-
-    getFilteredBooks(){
-      return this.bookData.filter(book=>{
-        return book.title.toLowerCase().includes(this.search.toLowerCase());
-      })
-    },
-
-    getFilteredAuthors(){
-      return this.bookData.filter(book=>{
-        return book.authors[0].name.toLowerCase().includes(this.search.toLowerCase());
-      })
-    },
-
-
-		
-  } 
 
 }
 
@@ -126,7 +95,6 @@ export default {
 .bannière{
 
   padding:90px;
-  /* background: linear-gradient(90deg, #d52a2a, #bf2eba); */ /*faire un dégradé de couleur*/
   background-image: url('https://www.forumdesimages.fr/media/cache/fdi_big_overview/media/fdi/36398-le-voyage-de-chihiro---_2001-studio-ghibli---nddtm-_4_.jpg');
   background-attachment: fixed;
   opacity: 1.;
@@ -157,11 +125,6 @@ export default {
   margin-left: 10px;
   margin-right: 10px;
 }
-
-/* .virtual_library:hover{
-  background-color: black;
-  color :v-bind (color);
-} */
 
 ul {
   list-style-type: none;

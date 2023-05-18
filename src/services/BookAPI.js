@@ -1,14 +1,3 @@
-// const getBookData = async function() {
-//     const response = await fetch("https://openlibrary.org/subjects/love.json")
-    
-//     if (response.status == 200) {
-//         return response.json()
-        
-//     } else {
-//     new Error(response.statusText)
-//     }
-// }
-
 const getBookData = async function(page) {
     const response = await fetch("https://openlibrary.org/search.json?subject=Love&page="+page+"")
       
@@ -24,7 +13,7 @@ const getBookData = async function(page) {
 async function getAllBookData() {
     let books = []
   
-    for (let page = 1; page <= 2; page++) {
+    for (let page = 1; page < 2; page++) {
       try {
         const bookData = await getBookData(page)
         books.push(...bookData.docs)
@@ -50,7 +39,7 @@ const getBookDataAnimal = async function(page) {
 async function getAllBookDataAnimal() {
     let books = []
   
-    for (let page = 1; page <= 5; page++) {
+    for (let page = 1; page < 2; page++) {
       try {
         const bookData = await getBookDataAnimal(page)
         books.push(...bookData.docs)
@@ -76,7 +65,7 @@ const getBookDataAction = async function(page) {
 async function getAllBookDataAction() {
     let books = []
   
-    for (let page = 1; page <= 5; page++) {
+    for (let page = 1; page < 2; page++) {
       try {
         const bookData = await getBookDataAction(page)
         books.push(...bookData.docs)
@@ -113,7 +102,7 @@ const getBookDataFantastic = async function(page) {
 async function getAllBookDataFantastic() {
     let books = []
   
-    for (let page = 1; page <= 2; page++) {
+    for (let page = 1; page < 2; page++) {
       try {
         const bookData = await getBookDataFantastic(page)
         books.push(...bookData.docs)

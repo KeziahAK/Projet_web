@@ -7,8 +7,6 @@
   </head>
   <body>
     <div class ="BooksAnimalGallery">
-      <!-- Tri par ordre alphabéthique -->
-      <bookGalleryOptions v-model:booksSortType="booksSortType"/>
       
       <div v-if="isLoading" class="loading-page">
             <p>Loading...</p>
@@ -16,7 +14,8 @@
       </div>
 
       <div v-else class="BooksGallery">
-
+        <bookGalleryOptions v-model:booksSortType="booksSortType"/>
+        <SearchBar v-model:searchBook="searchBook" @search="searchText"/>
         <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg'" :date="book.first_publish_year" :name_author="book.author_name[0]"/>
       </div>
   </div>
@@ -29,6 +28,7 @@
 import { getAllBookDataAnimal, getImage} from '../../services/BookAPI.js'
 import BookCard from '../Cards/BookCard.vue'
 import BookGalleryOptions from '../Options/BookGalleryOptions.vue'
+import SearchBar from '../Options/SearchBar.vue'
 
 
 
@@ -37,7 +37,9 @@ export default {
 
   components:{
     BookCard,
-    BookGalleryOptions
+    BookGalleryOptions,
+    SearchBar
+
   },
 
   data(){
@@ -46,6 +48,7 @@ export default {
       imageData : [],
       booksSortType: localStorage.getItem("booksSortType") || "AZName",
       isLoading:true,
+      searchBook: localStorage.getItem("searchBook"),
     }
   },
 
@@ -89,6 +92,12 @@ export default {
 
       else{
         data.sort(function(a,b){return a.author_name[0].localeCompare(b.author_name[0])})
+      }
+
+      if (this.searchBook !== "") {
+        data = data.filter(function(book) {
+          return book.title.toLowerCase().includes(this.searchBook.toLowerCase())
+        }.bind(this))
       }
 
       if(reversed) data = data.reverse()

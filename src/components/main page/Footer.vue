@@ -43,7 +43,6 @@
   .bannière_footer{
   
     padding:50px;
-    /* background: linear-gradient(90deg, #013011, #000000); faire un dégradé de couleur */
     background-image: url('https://cafedesimages.fr/wp-content/uploads/2023/01/banniere-chihiro.jpg');
 
     background-attachment: fixed;

@@ -41,10 +41,14 @@ export default {
         },
 
         methods: {
-            launchSearch(event){
-                this.$emit("update:searchBook", event.target.value)
-                this.$emit("search");
-            },
+        cleanSearch: function() {
+          this.search = ""
+        },
+
+        launchSearch(event){
+          this.$emit("update:searchBook", event.target.value)
+          this.$emit("search");
+        },
         }
 
     }

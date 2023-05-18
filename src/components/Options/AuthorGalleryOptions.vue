@@ -7,7 +7,6 @@
   </head>
   <body>
     <div class ="authorGalleryOptions">
-      <!-- Tri par ordre alphabéthique -->
       <label for="book-sort">Trier par : </label>
               <select value="authorsSortType" @input="onBooksSortTypeChanged" id="author-sort">
                 <option value="AZAuthor">Noms auteurs de A à Z</option>

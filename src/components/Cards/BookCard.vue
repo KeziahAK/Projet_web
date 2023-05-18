@@ -9,7 +9,6 @@
   
       <div class="books-details-card">
         <div class="image">
-          <!-- <img src="https://covers.openlibrary.org/b/id/12547191-M.jpg"> -->
           <img :src="cover_id"
           alt="Book Cover"
           width="140"
@@ -100,13 +99,13 @@ flex-wrap: wrap;
   margin: 5px;
   border-radius : 10px;
   font-size: 1em;
-  /* border: solid 1px #1f9c49; */
+
   box-shadow: 0px 6px 15px rgba(29, 108, 36, 0.7);
 }
 
 .image:hover{
--ms-transform: scale(1.07); /* IE 9 */
--webkit-transform: scale(1.07); /* Safari 3-8 */
+-ms-transform: scale(1.07); 
+-webkit-transform: scale(1.07); 
 transform: scale(1.07);
 }
   
