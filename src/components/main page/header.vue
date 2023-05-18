@@ -14,7 +14,7 @@
 
     <nav>
       <ul>                
-        <router-link to="/"> <img class= "logo" style="float:left" href="#my virtual library" id="logo" src="../assets/logo.png" alt="logo"/></router-link> 
+        <router-link to="/"> <img class= "logo" style="float:left" href="#my virtual library" id="logo" src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/47378/green-book-emoji-clipart-xl.png" alt="logo"/></router-link> 
           <li class="dropdown">
             <a href="#Parcourir" class="dropbtn">Parcourir Livres</a>
               <div class="dropdown-content">
@@ -40,22 +40,7 @@
             </li>
           <li><router-link to="/Tendances"> Tendances</router-link></li>
             
-           <!-- search bar -->
-          <div class="search">
-              
 
-                  <input type="text"
-                      placeholder=" Que recherchez-vous ?"
-                      v-model="search" @keyup.enter="submit" >
-                  <button v-if="search" @click="cleanSearch" type="submit" class="search-btn">
-                    <i>          
-                      <li style="float:right">Rechercher</li>
-                    </i>
-
-                  </button>    
-
-
-          </div>
       </ul>
     </nav>
         
@@ -69,7 +54,7 @@
 
 
 
-import { getBookData} from '../services/BookAPI.js';
+import { getBookData} from '../../services/BookAPI.js';
 
 
 
@@ -142,7 +127,7 @@ export default {
 
   padding:90px;
   /* background: linear-gradient(90deg, #d52a2a, #bf2eba); */ /*faire un dégradé de couleur*/
-  background-image: url('../assets/fond.jpg');
+  background-image: url('https://www.forumdesimages.fr/media/cache/fdi_big_overview/media/fdi/36398-le-voyage-de-chihiro---_2001-studio-ghibli---nddtm-_4_.jpg');
   background-attachment: fixed;
   opacity: 1.;
   border-radius: 10px 10px 10px 10px;
@@ -155,7 +140,7 @@ export default {
   font-size: 30px;
   text-align: center;
   opacity:1.;
-  color :rgb(172, 245, 166);
+  color :rgb(176, 250, 170);
 }
 
 
@@ -282,41 +267,5 @@ h1{
   opacity:1.;
   color :rgb(172, 245, 166);
 }
-
-.search input[type=text]{
-  width:300px;
-  height:30px;
-  border-radius:10px;
-  border: none;
- 
-  }
-         
-.search{
-  float:right;
-  margin:4px 4px 7px 4px;
-  border-radius: 10px;
-  border : 2px solid rgb(26, 137, 16);
-}
-
-.search-btn:hover{
-  background-color: #81b982;
-  border-radius:10px;
-}
-
-.search-btn{
-  border : none;
-  padding:5px;
-  margin : 5px;
-  background-color: v-bind(color);
-  border-radius: 5px;
-  box-shadow: 0px 6px 15px rgba(21, 58, 24, 0.7);
-  font-family:'Arial Narrow Bold', sans-serif;
-}
-
-
-
-
-
-
 
 </style>

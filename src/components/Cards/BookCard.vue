@@ -10,11 +10,11 @@
       <div class="books-details-card">
         <div class="image">
           <!-- <img src="https://covers.openlibrary.org/b/id/12547191-M.jpg"> -->
-          <router-link to="/ParcourirLivres/LivresDetails"><img :src="cover_id"
+          <img :src="cover_id"
           alt="Book Cover"
           width="140"
           height="214.6"
-          title="Book Cover"/></router-link>
+          title="Book Cover"/>
         </div>
   
         <div class="légende">

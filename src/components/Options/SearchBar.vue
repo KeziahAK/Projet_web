@@ -22,7 +22,17 @@ export default {
             
         },
 
+        data (){
+          return {color : '#1f9c49'}
+        },
+
         emits: ["update:searchBook", "search"],
+
+        computed: {
+          search: function () {
+            return this.searchBook && this.searchBook.length > 0;
+          },
+        },
 
         watch: {
             searchBook: function (newSearch){
@@ -45,18 +55,13 @@ export default {
 .search input[type=text]{
   width:300px;
   height:30px;
+  padding :2px;
   border-radius:10px;
   border: none;
+  box-shadow: 0px 6px 15px rgba(24, 67, 28, 0.7);
  
-  }
-         
-.search{
-  float:right;
-  margin:4px 4px 7px 4px;
-  border-radius: 10px;
-  border : 2px solid rgb(26, 137, 16);
 }
-
+         
 .search-btn:hover{
   background-color: #81b982;
   border-radius:10px;
@@ -64,11 +69,12 @@ export default {
 
 .search-btn{
   border : none;
+  height:30px;
   padding:5px;
-  margin : 5px;
+  margin : 10px;
   background-color: v-bind(color);
   border-radius: 5px;
-  box-shadow: 0px 6px 15px rgba(21, 58, 24, 0.7);
+  box-shadow: 0px 6px 15px rgba(24, 67, 28, 0.7);
   font-family:'Arial Narrow Bold', sans-serif;
 }
 

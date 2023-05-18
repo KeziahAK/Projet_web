@@ -1,32 +1,41 @@
 <template>
-  <head>
 
-    <meta charset="UTF-8">
-    <title> Bookshop </title>
-  
-  </head>
-  <body>
-    <div class ="BooksLoveGallery">
-      <!-- Tri par ordre alphabéthique -->
-      <bookGalleryOptions v-model:booksSortType="booksSortType"/>
-      <SearchBar v-model:searchBook="searchBook" @search="searchText"/>
+      <head>
 
-      <div class="BooksGallery">
+        <meta charset="UTF-8">
+        <title> Bookshop </title>
+      
+      </head>
+      <body>
+        <div class ="BooksLoveGallery">
+          <!-- Tri par ordre alphabéthique -->
+          
+          <bookGalleryOptions v-model:booksSortType="booksSortType"/> 
+          
+          <div v-if="isLoading" class="loading-page">
+            
+            <p>Loading...</p>
+            <img src="https://i.gifer.com/E0mD.gif" />
+          </div>
 
-        <!-- <BookCard v-for = "book in booksOrganizedData " :key="book.key" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg'" :name_author="book.authors_name[0]" :date="book.first_publish_year"/> -->
-        <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg'" :date="book.first_publish_year" :name_author="book.author_name[0]"/>
+          <div v-else class="BooksGallery">
+            <SearchBar v-model:searchBook="searchBook" @search="searchText"/>
+            <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg'" :date="book.first_publish_year" :name_author="book.author_name[0]"/>
+          </div>
       </div>
-  </div>
 
-  </body>
+      </body>
+
+
+
 
 </template>
 
 <script>
-import {  getImage, getAllBookData} from '../services/BookAPI.js'
-import BookCard from './BookCard.vue'
-import BookGalleryOptions from './BookGalleryOptions.vue'
-import SearchBar from './SearchBar.vue'
+import {  getImage, getAllBookData} from '../../services/BookAPI.js'
+import BookCard from '../Cards/BookCard.vue'
+import BookGalleryOptions from '../Options/BookGalleryOptions.vue'
+import SearchBar from '../Options/SearchBar.vue'
 
 
 
@@ -45,7 +54,8 @@ export default {
       imageData : [],
       booksSortType: localStorage.getItem("booksSortType") || "AZName",
       searchBook: localStorage.getItem("searchBook"),
-      color : '#1f9c49'
+      color : '#1f9c49',
+      isLoading :true,
     }
   },
 
@@ -60,20 +70,14 @@ export default {
 
     async Book() {
       try {
-        const allBookData = await getAllBookData()
-        this.bookData = allBookData
+        this.isLoading = true; // Ajouter cette ligne
+        const allBookData = await getAllBookData();
+        this.bookData = allBookData;
+        this.isLoading = false; // Ajouter cette ligne
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     },
-
-
-
-// async Book(){
-//       const book = await getBookDatasanspage()
-//       this.bookData = book.docs
-//     },
-
 
 
   async Image(){

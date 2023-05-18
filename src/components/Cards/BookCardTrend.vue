@@ -9,7 +9,6 @@
   
       <div class="books-card">
         <div class="image">
-          <!-- <img src="https://covers.openlibrary.org/b/id/12547191-M.jpg"> -->
           <router-link to="/ParcourirLivres/LivresDetails"><img :src="cover_i"
           alt="Le jour où les étoiles se sont éteintes"
           width="140"
@@ -19,8 +18,8 @@
   
         <div class="légende">
           <h2>{{title}}</h2>
+          <p>{{author_name}}</p>
           <p>{{date}}</p>
-          <!-- <p>{{ author_name }}</p> -->
           
         </div>
       </div>
@@ -36,7 +35,7 @@
     name: 'BookCardTrend',
     props:{
       cover_i :String,
-      // author_name : String,
+      author_name : String,
       title : String,
       date : String
       

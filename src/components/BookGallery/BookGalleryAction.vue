@@ -10,7 +10,12 @@
       <!-- Tri par ordre alphabéthique -->
       <bookGalleryOptions v-model:booksSortType="booksSortType"/>
 
-      <div class="BooksGallery">
+      <div v-if="isLoading" class="loading-page">
+            <p>Loading...</p>
+            <img src="https://i.gifer.com/E0mD.gif" />
+      </div>
+
+      <div v-else class="BooksGallery">
 
         <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg'" :date="book.first_publish_year" :name_author="book.author_name[0]"/>
       </div>
@@ -21,9 +26,9 @@
 </template>
 
 <script>
-import { getAllBookDataAction,  getImage} from '../services/BookAPI.js'
-import BookCard from './BookCard.vue'
-import BookGalleryOptions from './BookGalleryOptions.vue'
+import { getAllBookDataAction,  getImage} from '../../services/BookAPI.js'
+import BookCard from '../Cards/BookCard.vue'
+import BookGalleryOptions from '../Options/BookGalleryOptions.vue'
 
 
 
@@ -40,14 +45,11 @@ export default {
       bookData: [],
       imageData : [],
       booksSortType: localStorage.getItem("booksSortType") || "AZName",
+      isLoading:true,
     }
   },
 
-  // watch: {
-  //   booksSortType: function(newBooksSortType){
-  //     localStorage.setItem("booksSortType", newBooksSortType)
-  //   }
-  // },
+
 
   created: function(){
     this.Book()
@@ -58,10 +60,12 @@ export default {
   methods: {
     async Book() {
       try {
-        const allBookData = await getAllBookDataAction()
-        this.bookData = allBookData
+        this.isLoading = true; // Ajouter cette ligne
+        const allBookData = await getAllBookDataAction();
+        this.bookData = allBookData;
+        this.isLoading = false; // Ajouter cette ligne
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     },
     async Image(){

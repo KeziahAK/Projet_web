@@ -10,12 +10,16 @@
       <!-- Tri par ordre alphabéthique -->
       <bookGalleryOptions v-model:booksSortType="booksSortType"/>
 
+      <div v-if="isLoading" class="loading-page">
+            <p>Loading...</p>
+            <img src="https://i.gifer.com/E0mD.gif" />
+      </div>
 
-      <div class="BooksGallery">
+      <div v-else class="BooksGallery">
 
         <!-- <BookCard v-for = "book in getFilteredBooks " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" :name_author="book.authors[0].name"/> -->
 
-        <BookCardTrend v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_i="'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg'" :date="book.first_publish_year"/>
+        <BookCardTrend v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_i="'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg'" :date="book.first_publish_year" :author_name="book.author_name[0]"/>
 
       </div>
   </div>
@@ -25,9 +29,9 @@
 </template>
 
 <script>
-import { getBookDataTrend, getImage} from '../services/BookAPI.js'
-import BookCardTrend from './BookCardTrend.vue'
-import BookGalleryOptions from './BookGalleryOptions.vue'
+import { getBookDataTrend, getImage} from '../../services/BookAPI.js'
+import BookCardTrend from '../Cards/BookCardTrend.vue'
+import BookGalleryOptions from '../Options/BookGalleryOptions.vue'
 
 
 
@@ -44,6 +48,7 @@ export default {
     return{
       bookData: [],
       imageData : [],
+      isLoading: true,
       booksSortType: localStorage.getItem("booksSortType") || "AZName",
     }
   },
@@ -57,8 +62,10 @@ export default {
 
   methods: {
     async Book(){
+      this.isLoading=true
       const book = await getBookDataTrend()
       this.bookData = book.works
+      this.isLoading=false
     },
     async Image(){
       const id = this.book.cover_i;
@@ -81,7 +88,7 @@ export default {
       }
 
       else{
-        data.sort(function(a,b){return a.authors[0]["name"].localeCompare(b.authors[0]["name"])})
+        data.sort(function(a,b){return a.author_name[0].localeCompare(b.author_name[0])})
       }
 
       if(reversed) data = data.reverse()

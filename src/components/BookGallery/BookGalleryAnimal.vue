@@ -6,11 +6,16 @@
   
   </head>
   <body>
-    <div class ="BooksFantasticGallery">
+    <div class ="BooksAnimalGallery">
       <!-- Tri par ordre alphabéthique -->
       <bookGalleryOptions v-model:booksSortType="booksSortType"/>
+      
+      <div v-if="isLoading" class="loading-page">
+            <p>Loading...</p>
+            <img src="https://i.gifer.com/E0mD.gif" />
+      </div>
 
-      <div class="BooksGallery">
+      <div v-else class="BooksGallery">
 
         <BookCard v-for = "book in booksOrganizedData " :key="book.id" :title="book.title" :cover_id="'https://covers.openlibrary.org/b/id/'+book.cover_i+'-M.jpg'" :date="book.first_publish_year" :name_author="book.author_name[0]"/>
       </div>
@@ -21,14 +26,14 @@
 </template>
 
 <script>
-import { getAllBookDataFantastic,  getImage} from '../services/BookAPI.js'
-import BookCard from './BookCard.vue'
-import BookGalleryOptions from './BookGalleryOptions.vue'
+import { getAllBookDataAnimal, getImage} from '../../services/BookAPI.js'
+import BookCard from '../Cards/BookCard.vue'
+import BookGalleryOptions from '../Options/BookGalleryOptions.vue'
 
 
 
 export default {
-  name: 'BookGalleryFantastic',
+  name: 'BookGalleryAnimal',
 
   components:{
     BookCard,
@@ -40,14 +45,10 @@ export default {
       bookData: [],
       imageData : [],
       booksSortType: localStorage.getItem("booksSortType") || "AZName",
+      isLoading:true,
     }
   },
 
-  // watch: {
-  //   booksSortType: function(newBooksSortType){
-  //     localStorage.setItem("booksSortType", newBooksSortType)
-  //   }
-  // },
 
   created: function(){
     this.Book()
@@ -58,10 +59,12 @@ export default {
   methods: {
     async Book() {
       try {
-        const allBookData = await getAllBookDataFantastic()
-        this.bookData = allBookData
+        this.isLoading = true; // Ajouter cette ligne
+        const allBookData = await getAllBookDataAnimal();
+        this.bookData = allBookData;
+        this.isLoading = false; // Ajouter cette ligne
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     },
     async Image(){

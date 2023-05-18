@@ -34,8 +34,8 @@
 
 
 
-import App_header from './components/header.vue'
-import App_footer from './components/Footer.vue'
+import App_header from './components/main page/header.vue'
+import App_footer from './components/main page/Footer.vue'
 
 
 

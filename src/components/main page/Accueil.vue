@@ -11,7 +11,7 @@
 
   
         <h1>Bienvenue</h1>
-        <img src="../assets/Bienvenue.jpg">
+        <img src="https://i.giphy.com/kjwPBKzixTZxS.gif">
           
      </div>
 

@@ -113,7 +113,7 @@ const getBookDataFantastic = async function(page) {
 async function getAllBookDataFantastic() {
     let books = []
   
-    for (let page = 1; page <= 5; page++) {
+    for (let page = 1; page <= 2; page++) {
       try {
         const bookData = await getBookDataFantastic(page)
         books.push(...bookData.docs)

@@ -10,8 +10,12 @@
 
     <authorGalleryOptions v-model:authorsSortType="authorsSortType"/>
 
+    <div v-if="isLoading" class="loading-page">
+            <p>Loading...</p>
+            <img src="https://i.gifer.com/E0mD.gif" />
+    </div>
     
-    <div class="AuthorGallery">
+    <div v-else class="AuthorGallery">
       <AuthorCard v-for = "book in authorsOrganizedData " :key="book.id" :author_cover="'https://covers.openlibrary.org/a/olid/'+book.author_key[0]+'-M.jpg'" :name_author="book.author_name[0]"/>
     </div> 
   </div> 
@@ -22,9 +26,9 @@
 </template>
 
 <script>
-import AuthorCard from "./AuthorCard.vue"
-import { getAllBookDataAction, getAuthorImage} from '../services/BookAPI.js'
-import AuthorGalleryOptions from "./AuthorGalleryOptions.vue"
+import AuthorCard from "../Cards/AuthorCard.vue"
+import { getAllBookDataAction, getAuthorImage} from '../../services/BookAPI.js'
+import AuthorGalleryOptions from "../Options/AuthorGalleryOptions.vue"
 
 
 
@@ -40,7 +44,7 @@ export default {
       authorData:[],
       imageData : [],
       authorsSortType: localStorage.getItem("authorsSortType") || "AZName",
-      
+      isLoading:true
     }
   },
 
@@ -55,8 +59,10 @@ export default {
 
     async Author(){
       try {
+        this.isLoading=true
         const allAuthorData = await getAllBookDataAction()
         this.authorData = allAuthorData
+        this.isLoading=false
       } catch (error) {
         console.error(error)
       }
